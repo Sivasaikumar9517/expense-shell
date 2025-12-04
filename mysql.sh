@@ -38,6 +38,13 @@ VALIDATE $? "Enabling Mysql server is"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "Starting Mysql server is"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? "Setting up Root Password is"
+mysql -h mysql.jobsearchindia.online -u root -pExpenseApp@1 -e "show databases;"
+
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? "Setting up Root Password is"
+else
+    echo "Mysql Root Password is $Y Alredy Setup $N"
+fi
 
