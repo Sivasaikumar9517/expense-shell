@@ -44,10 +44,10 @@ then
     useradd expense &>>$LOG_FILE_NAME
     VALIDATE $? "Adding the expense user "
 else 
-    echo "User Expense is already exists"
+    echo "User Expense is $Y already exists $N"
 fi
 
-mkdir /app &>>$LOG_FILE_NAME
+mkdir -p /app &>>$LOG_FILE_NAME
 VALIDATE $? "Creating App directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME
