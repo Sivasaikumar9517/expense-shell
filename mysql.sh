@@ -29,7 +29,7 @@ fi
 
 echo "Script started executing at: $TIME_STAMP" 
 
-dnf install mysql-serer -y &>>$LOG_FILE_NAME
+dnf install mysql-server -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing Mysql server is"
 
 systemctl enable mysqld &>>$LOG_FILE_NAME
